@@ -1,2 +1,10 @@
-# work-count-analyzer
-For this assignment, I will create a single "Word Count" project. My program will present a menu of 4 predefined files (Files are attached below). The user will select a file, and the program will analyze it. The core logic must be encapsulated within a class.
+# Word Count Analyzer
+
+An object-oriented Python program that reads a user-selected text file, cleans the text by removing punctuation, converts it to lowercase, and prints an alphabetical report of word frequencies.
+
+## Project Structure
+* `Lab10_username-1.py`: Main program file containing the `WordAnalyzer` class and driver logic.
+* `princess_mars.txt`: Source text file.
+* `Tarzan.txt`: Source text file.
+* `treasure_island.txt`: Source text file.
+* `monte_cristo.txt`: Source text file.
