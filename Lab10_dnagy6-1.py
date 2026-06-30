@@ -17,8 +17,28 @@ class WordAnalyzer:
         self._frequencies = {}
 
     def process_file(self) -> bool:
-        # TODO: text cleaning will go here
-        pass
+        if not self._filepath.exists():
+            return False
+        
+        try:
+            punctuation_table = str.maketrans('', '', string.punctuation) #NOTE: Punctuation is !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+
+            with self._filepath.open('r', encoding='utf-8') as file:
+                for line in file:
+
+                    cleaned_line = line.lower()
+                    cleaned_line = cleaned_line.translate(punctuation_table)
+                    words = cleaned_line.split()
+
+                    for word in words:
+                        if word in self._frequencies:
+                            self._frequencies[word] += 1
+                        else:
+                            self._frequencies[word] = 1
+            return True
+        except FileNotFoundError:
+            print(f"Error: The file at {self._filepath} could not be found.")
+            return False
 
     def print_report(self):
         #TODO: abc sorting and printing the report will go here
