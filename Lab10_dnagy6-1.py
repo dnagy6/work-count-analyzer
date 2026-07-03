@@ -8,6 +8,7 @@ Date: July 5, 2026
 
 """
 
+from importlib.metadata import files
 from pathlib import Path
 import string
 
@@ -64,9 +65,36 @@ class WordAnalyzer:
 
 def main():
     """
-    Main function to handle user interaction, file processing, and report generation."""
-    #TODO: menu loop, input validation, and class execution
-    pass
+    Main function to handle user interaction, file processing, and report generation.
+    """
+    while True:
+        print("\n--- Word Count Analyzer ---")
+        print("Please select a file to analyze:")
+
+        for key, path in files.items():
+        
+            clean_name = path.stem.replace('_', ' ').title()
+            print(f"{key}. {clean_name}")
+        print("5. Exit")
+
+        choice = input("\nEnter your choice (1-5): ")
+
+        if choice == '5':
+            print("\nGoodbye!")
+            break
+        elif choice in files:
+            selected_path = files[choice]
+            print(f"\nProcessing '{selected_path.name}'...\n")
+
+            analyzer = WordAnalyzer(selected_path)
+
+            if analyzer.process_file():
+                analyzer.print_report()
+            
+            input("\nPress Enter to return to the main menu...")
+        else:
+            print("\nInvalid choice. Please select from 1-5.")
+            input ("\nPress Enter to return to the main menu...")
 
 if __name__ == "__main__":
     main()
