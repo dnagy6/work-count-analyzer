@@ -29,7 +29,8 @@ class WordAnalyzer:
             return False
         
         try:
-            punctuation_table = str.maketrans('', '', string.punctuation) #NOTE: Punctuation is !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+            extended_punctuation = string.punctuation + "“”‘’—"  #NOTE: Adding additional punctuation characters
+            punctuation_table = str.maketrans('', '', extended_punctuation) #NOTE: Punctuation is !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
             with self._filepath.open('r', encoding='utf-8') as file:
                 for line in file:
@@ -73,7 +74,7 @@ def main():
         "3": Path("treasure_island.txt"),
         "4": Path("monte_cristo.txt"),
     }
-    
+
     while True:
         print("\n--- Word Count Analyzer ---")
         print("Please select a file to analyze:")
