@@ -41,8 +41,15 @@ class WordAnalyzer:
             return False
 
     def print_report(self):
-        #TODO: abc sorting and printing the report will go here
-        pass
+        if not self._frequencies:
+            print("No data available. Please process a file first.")
+            return
+        
+        sorted_words = sorted(self._frequencies.keys())
+
+        for word in sorted_words:
+            count = self._frequencies[word]
+            print(f"{word:<12} :: {count}")
 
 def main():
     #TODO: menu loop, input validation, and class execution
