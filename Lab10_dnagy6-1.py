@@ -67,6 +67,13 @@ def main():
     """
     Main function to handle user interaction, file processing, and report generation.
     """
+    files = {
+        "1": Path("princess_mars.txt"),
+        "2": Path("Tarzan.txt"),
+        "3": Path("treasure_island.txt"),
+        "4": Path("monte_cristo.txt"),
+    }
+    
     while True:
         print("\n--- Word Count Analyzer ---")
         print("Please select a file to analyze:")
