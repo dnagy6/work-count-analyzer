@@ -12,11 +12,18 @@ from pathlib import Path
 import string
 
 class WordAnalyzer:
+    """
+    Starts the WordAnalyzer with a private path object and a private dictionary to hold word frequencies.
+    """
     def __init__(self, filepath: str):
         self._filepath = Path(filepath)
         self._frequencies = {}
 
     def process_file(self) -> bool:
+        """
+        To see if the file exists, and if it does, read the file line by line, removing punctuation, lowercases text,
+        and will update the frequency dictionary. Returns True if successful, False if FileNotFoundError.
+        """
         if not self._filepath.exists():
             return False
         
@@ -41,6 +48,10 @@ class WordAnalyzer:
             return False
 
     def print_report(self):
+        """
+        Alphabetical sorting and prints the report in the format: word :: frequency. If no data is available,
+        it will print a message indicating that the user should process a file first.
+        """
         if not self._frequencies:
             print("No data available. Please process a file first.")
             return
@@ -52,6 +63,8 @@ class WordAnalyzer:
             print(f"{word:<12} :: {count}")
 
 def main():
+    """
+    Main function to handle user interaction, file processing, and report generation."""
     #TODO: menu loop, input validation, and class execution
     pass
 
